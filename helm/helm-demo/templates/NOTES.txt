@@ -1,0 +1,11 @@
+La aplicacion {{ .Values.app.name }} se ha desplegado.
+
+Para acceder desde tu equipo, ejecuta:
+  kubectl port-forward service/{{ include "helm-demo.fullname" . }} 8080:{{ .Values.service.port }}
+
+Despues abre http://localhost:8080
+La comprobacion de salud esta disponible en http://localhost:8080/health
+
+{{- if .Values.ingress.enabled }}
+Ingress configurado para: http://{{ .Values.ingress.host }}
+{{- end }}
